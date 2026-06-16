@@ -5,6 +5,10 @@ import path from 'path';
 
 const REGISTRY_URL = 'https://raw.githubusercontent.com/WooperLUA/atlas-web-ui/master/registry.json';
 
+const HEADERS = {
+    'User-Agent': 'atlas-ui-cli/1.0.0'
+};
+
 async function main()
 {
     const args = process.argv.slice(2);
@@ -18,25 +22,33 @@ async function main()
         process.exit(1);
     }
 
-    console.log(`⏳ Fetching registry...`);
+    console.log(`Fetching registry...`);
 
     try
     {
-        const registryRes = await fetch(REGISTRY_URL);
-        if (!registryRes.ok) throw new Error('Failed to fetch registry');
+        const registryRes = await fetch(REGISTRY_URL, {headers: HEADERS});
+        if (!registryRes.ok)
+        {
+            throw new Error(`Failed to fetch registry: HTTP ${registryRes.status} ${registryRes.statusText}`);
+        }
         const registry = await registryRes.json();
 
         const fileUrl = registry[componentName];
         if (!fileUrl)
         {
-            console.error(`❌ Component "${componentName}" not found in registry.`);
+            console.error(`Component "${componentName}" not found in registry.`);
             console.log('Available components:', Object.keys(registry).join(', '));
             process.exit(1);
         }
 
-        console.log(`⏳ Downloading ${componentName}...`);
-        const codeRes = await fetch(fileUrl);
-        if (!codeRes.ok) throw new Error(`Failed to fetch ${componentName}`);
+        console.log(`⏳ Downloading ${componentName} from:\n${fileUrl}`);
+
+        const codeRes = await fetch(fileUrl, {headers: HEADERS});
+        if (!codeRes.ok)
+        {
+            throw new Error(`Failed to fetch ${componentName}: HTTP ${codeRes.status} ${codeRes.statusText}`);
+        }
+
         const code = await codeRes.text();
 
         const isUtility = componentName === 'merge-class';
@@ -46,11 +58,11 @@ async function main()
         const targetPath = path.join(targetDir, `${componentName}.ts`);
 
         await writeFile(targetPath, code);
-        console.log(`✅ Successfully installed ${componentName} to ${targetPath.replace(process.cwd(), '.')}`);
+        console.log(`Successfully installed ${componentName} to ${targetPath.replace(process.cwd(), '.')}`);
 
     } catch (error)
     {
-        console.error('❌ Error:', error.message);
+        console.error('Error:', error.message);
         process.exit(1);
     }
 }
