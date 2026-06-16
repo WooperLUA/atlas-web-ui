@@ -1,4 +1,4 @@
 {
-  "button": "https://raw.githubusercontent.com/WooperLUA/atlas-web-ui/main/src/components/AButton.ts",
-  "merge-class": "https://raw.githubusercontent.com/WooperLUA/atlas-web-ui/main/src/utils/merge-class.ts"
+  "button": "https://raw.githubusercontent.com/WooperLUA/atlas-web-ui/master/src/components/AButton.ts",
+  "merge-class": "https://raw.githubusercontent.com/WooperLUA/atlas-web-ui/master/src/utils/merge-class.ts"
 }

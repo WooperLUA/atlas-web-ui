@@ -3,7 +3,7 @@
 import {writeFile, mkdir} from 'fs/promises';
 import path from 'path';
 
-const REGISTRY_URL = 'https://raw.githubusercontent.com/WooperLUA/atlas-web-ui/main/registry.json';
+const REGISTRY_URL = 'https://raw.githubusercontent.com/WooperLUA/atlas-web-ui/master/registry.json';
 
 async function main()
 {
