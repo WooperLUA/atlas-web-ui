@@ -52,7 +52,7 @@ async function main()
         const code = await codeRes.text();
 
         const isUtility = componentName === 'merge-class';
-        const targetDir = path.join(process.cwd(), isUtility ? 'src/utils' : 'src/components/ui');
+        const targetDir = path.join(process.cwd(), isUtility ? 'src/utils/src/atlas-web-ui' : 'src/components/src/atlas-web-ui');
 
         await mkdir(targetDir, {recursive: true});
         const targetPath = path.join(targetDir, `${componentName}.ts`);

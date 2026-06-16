@@ -7,7 +7,7 @@
     "atlas-ui": "./cli.mjs"
   },
   "keywords": [
-    "atlas",
+    "atlas-web",
     "ui",
     "components",
     "cli"

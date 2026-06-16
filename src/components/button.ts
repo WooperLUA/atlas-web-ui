@@ -7,7 +7,7 @@ export interface ButtonProps extends AtlasTraits<'button'> {
     size?: 'default' | 'sm' | 'lg' | 'icon';
 }
 
-export const AButton = ({
+export const Button = ({
                            variant = 'default',
                            size = 'default',
                            className,
