@@ -1,6 +1,6 @@
 {
   "name": "atlas-web-ui",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "type": "module",
   "description": "A shadcn-like component library for the Atlas Web Framework",
   "bin": {
