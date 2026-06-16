@@ -1,0 +1,15 @@
+{
+  "lockfileVersion": 1,
+  "configVersion": 1,
+  "workspaces": {
+    "": {
+      "name": "atlas-web-ui",
+      "dependencies": {
+        "atlas-web": "^2.13.1",
+      },
+    },
+  },
+  "packages": {
+    "atlas-web": ["atlas-web@2.13.1", "", {}, "sha512-Ri6c6hOaeOR1UVuK0kpZO22HX5BTwkM93TBwb4uENIVdtiVROlcq76vghdaNZ62ICVwEJP+R2cEO6K7nmuOFoA=="],
+  }
+}
